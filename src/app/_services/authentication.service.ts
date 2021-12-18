@@ -7,6 +7,9 @@ import { map } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 
+
+const  API = `http://api.elearning.nvcd.xyz/`;
+
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private userSubject: BehaviorSubject<User>;
@@ -24,8 +27,8 @@ export class AuthenticationService {
         return this.userSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
+    login(email: string, password: string) {
+        return this.http.post<any>(API + 'auth/login', { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
@@ -39,5 +42,9 @@ export class AuthenticationService {
         localStorage.removeItem('user');
         this.userSubject.next(null);
         this.router.navigate(['/login']);
+    }
+
+    checkRole() {
+      return this.http.get<any>(API + 'auth/check-role');
     }
 }
