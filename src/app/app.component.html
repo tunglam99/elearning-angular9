@@ -1,9 +1,11 @@
 ﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+<nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/register" *ngIf="!user">Đăng ký</a>
+        <a class="nav-item nav-link" routerLink="/login" *ngIf="!user">Đăng Nhập</a>
         <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <a class="nav-item nav-link" (click)="logout()" *ngIf="user">Logout</a>
     </div>
 </nav>
 
@@ -13,11 +15,4 @@
 </div>
 
 <!-- credits -->
-<div class="text-center mt-4">
-    <p>
-        <a href="https://jasonwatmore.com/post/2020/05/15/angular-9-role-based-authorization-tutorial-with-example" target="_top">Angular 9 - Role Based Authorization Tutorial with Example</a>
-    </p>
-    <p>
-        <a href="https://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-    </p>
-</div>
+

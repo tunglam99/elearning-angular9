@@ -21,7 +21,7 @@ export class AuthGuard implements CanActivate {
                 return false;
             }
 
-            // authorised so return true
+            // authorised so sreturn true
             return true;
         }
 

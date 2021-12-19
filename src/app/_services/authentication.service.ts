@@ -47,4 +47,9 @@ export class AuthenticationService {
     checkRole() {
       return this.http.get<any>(API + 'auth/check-role');
     }
+
+    createUser(body: any): Observable<any> {
+      return this.http.post<any>(API + 'auth/register', body);
+    }
+
 }
