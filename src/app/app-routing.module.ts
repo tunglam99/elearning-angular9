@@ -7,6 +7,7 @@ import { LoginComponent } from './login';
 import { AuthGuard } from './_helpers';
 import { Role } from './_models';
 import {RegisterComponent} from '@app/register/register.component';
+import {QuizComponent} from '@app/quiz/quiz.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'quiz',
+    component: QuizComponent
   },
 
     // otherwise redirect to home
