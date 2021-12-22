@@ -1,14 +1,13 @@
-﻿<!--<div class="card-title" id="card-title">-->
-<!--  <span class="card-icon">-->
-<!--    -->
-<!--  </span>-->
-<!--</div>-->
 <div class="card mt-4">
-  <h4 class="card-header">Ngân hàng câu hỏi</h4>
+  <h4 class="card-header">Tạo đề thi</h4>
   <div class="card-body">
     <div class="-mx-3 md:flex mb-2 w-full">
-      <button class="btn btn-primary btn-sm mb-3" (click)="openModalAddQuestion()">Thêm câu hỏi</button>
-      <kendo-grid [data]="listQuestion"
+      Chủ đề<br>
+      <input id="THDC" name="check" class="" type="radio" [checked]="questionType === 'THDC'"
+             (click)="handleChange('THDC')"> Tin học đại cương<br>
+      <input id="TKWC" name="check" class="mb-5" type="radio" [checked]="questionType === 'TKWS'"
+             (click)="handleChange('TKWS')"> Thiết kế website
+      <kendo-grid [data]="dataGrid"
                   [style.maxHeight.px]="500"
                   [kendoGridSelectBy]="'id'"
                   (selectedKeysChange)="onChange($event)"
@@ -22,24 +21,9 @@
           </ng-template>
         </kendo-grid-checkbox-column>
         <kendo-grid-column  title="STT" [width]="45" class="text-center"
-                           headerClass="text-center font-weight-bold" editable="false">
+                            headerClass="text-center font-weight-bold" editable="false">
           <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">{{rowIndex + 1}}</ng-template>
         </kendo-grid-column>
-        <kendo-grid-command-column  headerClass="text-center font-weight-bold" title="Thao tác" [width]="100" [resizable]="false" sortable="false"
-                                    [columnMenu]="false">
-          <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem>
-            <div class="d-flex justify-content-around align-items-center">
-              <button placement="top" container="body" ngbTooltip="Sửa câu hỏi"
-                      kendoGridEditCommand class="btn btn-primary button-icon" (click)="edit(dataItem)">
-                <i class="fa fa-pencil"></i>
-              </button>
-              <button placement="top" container="body" ngbTooltip="Xóa câu hỏi"
-                      kendoGridEditCommand class="btn btn-danger button-icon" (click)="delete(dataItem)">
-                <i class="fa fa-trash"></i>
-              </button>
-            </div>
-          </ng-template>
-        </kendo-grid-command-column>
         <kendo-grid-column [width]="200" field="question" headerClass="text-center font-weight-bold" editor="text"
                            title="Nội dung câu hỏi">
 
@@ -54,13 +38,21 @@
             {{getLogType(dataItem.questionType)}}
           </ng-template>
         </kendo-grid-column>
-      </kendo-grid>
+      </kendo-grid><br>
       <div class="custom-loading-h">
         <div *ngIf="loading" class="k-i-loading"></div>
+      </div>
+      <div class="mt-1">
+        Mã đề thi<br>
+        <input type="text" [(ngModel)]="testCode">
+      </div>
+      <div class="mt-3">
+        Số lượng câu hỏi<br>
+        <input type="number" [(ngModel)]="numberQuestion">
+      </div>
+      <div class="mt-3">
+        <button class="btn btn-primary" (click)="save()">Tạo đề</button>
       </div>
     </div>
   </div>
 </div>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Add icon library -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

@@ -1,24 +1,26 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
+﻿import {Component, OnInit} from '@angular/core';
+import {first} from 'rxjs/operators';
 
-import { User } from '@app/_models';
-import { UserService } from '@app/_services';
+import {User} from '@app/_models';
+import {UserService} from '@app/_services';
 import {AdminService} from '@app/_services/admin.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalAddQuestionComponent} from '@app/admin/modal-add-question/modal-add-question.component';
 import {DeleteQuestionComponent} from '@app/admin/delete-question/delete-question.component';
 
-@Component({ templateUrl: 'admin.component.html' })
+@Component({templateUrl: 'admin.component.html'})
 export class AdminComponent implements OnInit {
-    loading = false;
-    listQuestion: any;
+  loading = false;
+  listQuestion: any;
   public mySelection: string[] = [];
-    constructor(private adminService: AdminService,
-                private modalService: NgbModal,) { }
 
-    ngOnInit() {
-      this.loadData();
-    }
+  constructor(private adminService: AdminService,
+              private modalService: NgbModal,) {
+  }
+
+  ngOnInit() {
+    this.loadData();
+  }
 
   openModalAddQuestion() {
     const modalRef = this.modalService.open(ModalAddQuestionComponent, {
@@ -33,7 +35,7 @@ export class AdminComponent implements OnInit {
       if (result === 'create') {
         this.loadData();
       }
-    }).catch(error => error)
+    }).catch(error => error);
   }
 
   getLogType(logAppType: any) {
@@ -45,8 +47,10 @@ export class AdminComponent implements OnInit {
   }
 
   private loadData() {
+    this.loading = true;
     this.adminService.getAll().subscribe(data => {
       this.listQuestion = data;
+      this.loading = false;
       console.log(this.listQuestion);
     });
   }
@@ -87,6 +91,6 @@ export class AdminComponent implements OnInit {
       if (result === 'update') {
         this.loadData();
       }
-    }).catch(error => error)
+    }).catch(error => error);
   }
 }

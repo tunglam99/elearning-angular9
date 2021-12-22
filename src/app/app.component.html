@@ -5,6 +5,7 @@
         <a class="nav-item nav-link" routerLink="/register" *ngIf="!user">Đăng ký</a>
         <a class="nav-item nav-link" routerLink="/login" *ngIf="!user">Đăng Nhập</a>
         <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
+        <a class="nav-item nav-link" routerLink="/test" *ngIf="isAdmin">Đề thi</a>
         <a class="nav-item nav-link" (click)="logout()" *ngIf="user">Logout</a>
     </div>
 </nav>

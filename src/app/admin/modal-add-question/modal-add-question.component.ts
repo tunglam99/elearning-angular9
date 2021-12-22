@@ -75,7 +75,7 @@ export class ModalAddQuestionComponent implements OnInit {
         correctAnswer: this.correctAnswer
       };
       this.adminService.update(id, put).subscribe(() => {
-        this.notiService.showSuccess();
+        this.notiService.showUpdate();
         this.activeModal.close('update');
       });
     } else {
@@ -90,21 +90,33 @@ export class ModalAddQuestionComponent implements OnInit {
         },
         correctAnswer: this.correctAnswer
       };
-      console.log(body);
-      if (body.question === '' || body.question === null || body.question === undefined){
-        this.notifier.notify('eror', 'B chưa nhập nội dung');
+
+      if (body.question === '' || body.question === null || body.question === undefined) {
+        this.notiService.showNoti('Bạn phải nhập nội dung câu hỏi', 'error');
         return;
       }
-      if (body.questionType === undefined){
-        this.notifier.notify('eror', 'B chọn kiểu nội dung');
-      }
-      if (body.answer.answerA === undefined || body.answer.answerA === ''){
-        this.notifier.notify('eror', 'B chưa chọn A');
+      if (body.questionType === undefined) {
+        this.notiService.showNoti('Bạn phải chọn chủ đề câu hỏi', 'error');
         return;
       }
-      console.log(body);
+      if (body.answer.answerA === undefined || body.answer.answerA === '') {
+        this.notiService.showNoti('Bạn phải nhập đáp án A', 'error');
+        return;
+      }
+      if (body.answer.answerB === undefined || body.answer.answerB === '') {
+        this.notiService.showNoti('Bạn phải nhập đáp án B', 'error');
+        return;
+      }
+      if (body.answer.answerC === undefined || body.answer.answerC === '') {
+        this.notiService.showNoti('Bạn phải nhập đáp án C', 'error');
+        return;
+      }
+      if (body.answer.answerD === undefined || body.answer.answerD === '') {
+        this.notiService.showNoti('Bạn phải nhập đáp án D', 'error');
+        return;
+      }
       this.adminService.createQuestion(body).subscribe(() => {
-        this.notifier.notify('success', 'Tạo mới câu hỏi thành công');
+        this.activeModal.close('create');
         this.notiService.showSuccess();
       });
     }

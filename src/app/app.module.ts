@@ -23,7 +23,8 @@ import {GridModule, SharedModule} from '@progress/kendo-angular-grid';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import {DeleteQuestionComponent} from '@app/admin/delete-question/delete-question.component';
 import {ToastrModule} from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';;
+import { TestComponent } from './test/test.component'
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -98,7 +99,8 @@ export const toastrConfig = {
 ,
         QuizComponent
 , ModalAddQuestionComponent,
-      DeleteQuestionComponent
+      DeleteQuestionComponent,
+      TestComponent
             ],
   entryComponents: [
     ModalAddQuestionComponent, DeleteQuestionComponent

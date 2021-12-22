@@ -30,6 +30,12 @@ export class NotificationService {
   showSuccess() {
     this.toastr.success('Thêm mới thành công');
   }
+  showUpdate() {
+    this.toastr.success('Cập nhật thành công');
+  }
+  showDelete() {
+    this.toastr.success('Xóa thành công');
+  }
 
   showError(message, title) {
     this.toastr.error();

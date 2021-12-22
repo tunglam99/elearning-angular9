@@ -8,6 +8,7 @@ import { AuthGuard } from './_helpers';
 import { Role } from './_models';
 import {RegisterComponent} from '@app/register/register.component';
 import {QuizComponent} from '@app/quiz/quiz.component';
+import {TestComponent} from '@app/test/test.component';
 
 const routes: Routes = [
     {
@@ -17,8 +18,14 @@ const routes: Routes = [
     {
         path: 'admin',
         component: AdminComponent,
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         data: { roles: [Role.Admin] }
+    },
+    {
+      path: 'test',
+      component: TestComponent,
+      canActivate: [AuthGuard],
+      data: { roles: [Role.Admin] }
     },
     {
         path: 'login',

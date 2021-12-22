@@ -32,4 +32,12 @@ export class AdminService {
   deleteQ(id: string): Observable<any> {
     return this.http.delete(`${this.API}question/${id}`);
   }
+
+  getQByType(body: any): Observable<any> {
+    return this.http.post<any>(`${this.API}question/type`, body);
+  }
+
+  createTest(body: any) : Observable<any> {
+    return this.http.post<any>(`${this.API}test`, body);
+  }
 }

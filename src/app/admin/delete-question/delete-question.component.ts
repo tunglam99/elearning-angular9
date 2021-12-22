@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AdminService} from '@app/_services/admin.service';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {NotifierService} from 'angular-notifier';
+import {NotificationService} from '@app/_services/notification.service';
 
 @Component({
   selector: 'app-delete-question',
@@ -13,6 +14,7 @@ export class DeleteQuestionComponent implements OnInit {
   private readonly notifier: NotifierService;
   constructor(private adminService: AdminService,
               public _NgbActiveModal: NgbActiveModal,
+              private notiService: NotificationService,
               notifierService: NotifierService) { this.notifier = notifierService;}
 
   ngOnInit(): void {
@@ -27,7 +29,7 @@ export class DeleteQuestionComponent implements OnInit {
   onSubmit() {
     this.adminService.deleteQ(this.selectedItem.id).subscribe(() => {
       this._NgbActiveModal.close('ok');
-      this.notifier.notify('success', 'Xóa thành công');
-    })
+      this.notiService.showDelete();
+    });
   }
 }
