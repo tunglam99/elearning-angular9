@@ -32,7 +32,8 @@
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.less"
+              "src/styles.less",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           },
@@ -99,7 +100,8 @@
               {
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
-              "src/styles.less"
+              "src/styles.less",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           }

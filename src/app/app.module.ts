@@ -22,6 +22,8 @@ import { ModalAddQuestionComponent } from './admin/modal-add-question/modal-add-
 import {GridModule, SharedModule} from '@progress/kendo-angular-grid';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import {DeleteQuestionComponent} from '@app/admin/delete-question/delete-question.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -63,7 +65,12 @@ const customNotifierOptions: NotifierOptions = {
     overlap: 150
   }
 };
-
+export const toastrConfig = {
+  positionClass: 'toast-bottom-right',
+  maxOpened: 3,
+  autoDismiss: true,
+  timeOut: 3000,
+};
 @NgModule({
     imports: [
       NotifierModule.withConfig(
@@ -78,6 +85,8 @@ const customNotifierOptions: NotifierOptions = {
         GridModule,
         SharedModule,
         NgbTooltipModule,
+      ToastrModule.forRoot(toastrConfig),
+      BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,

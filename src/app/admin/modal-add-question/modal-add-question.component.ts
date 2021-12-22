@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {AdminService} from '@app/_services/admin.service';
 import {NotifierService} from 'angular-notifier';
+import {NotificationService} from '@app/_services/notification.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ModalAddQuestionComponent implements OnInit {
 
   constructor(private NgbActiveModal: NgbActiveModal,
               private adminService: AdminService,
-              notifierService: NotifierService) {
+              notifierService: NotifierService,
+              private notiService: NotificationService,) {
     this.notifier = notifierService;
   }
 
@@ -73,7 +75,7 @@ export class ModalAddQuestionComponent implements OnInit {
         correctAnswer: this.correctAnswer
       };
       this.adminService.update(id, put).subscribe(() => {
-        this.notifier.notify('success', 'Cập nhật câu hỏi thành công');
+        this.notiService.showSuccess();
         this.activeModal.close('update');
       });
     } else {
@@ -103,7 +105,7 @@ export class ModalAddQuestionComponent implements OnInit {
       console.log(body);
       this.adminService.createQuestion(body).subscribe(() => {
         this.notifier.notify('success', 'Tạo mới câu hỏi thành công');
-        this.activeModal.close('create');
+        this.notiService.showSuccess();
       });
     }
 

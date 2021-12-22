@@ -42,6 +42,7 @@
     "@progress/kendo-theme-default": "^4.42.0",
     "angular-notifier": "4.0.0",
     "bootstrap": "^4.4.0",
+    "ngx-toastr": "^14.2.1",
     "rxjs": "^6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "^0.10.2"
