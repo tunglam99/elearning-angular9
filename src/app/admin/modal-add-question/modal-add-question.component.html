@@ -1,5 +1,10 @@
-<div class="card mt-4">
-  <h4 class="card-header">Tạo câu hỏi</h4>
+<div class="modal-header">
+  <h4 class="modal-title">Thêm mới câu hỏi</h4>
+  <button class="btn-close-h" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
   <div class="card-body">
     <div class="-mx-3 md:flex mb-2 w-full">
       <div class="md:w-full px-3">
@@ -8,15 +13,97 @@
           Nội dung câu hỏi
         </label>
         <input
+          [(ngModel)]="question"
           class=" w-100 appearance-none border rounded-md w-full py-2 px-3 my-1 text-gray-600 bg-gray-200 leading-tight outline-none focus:border-green-500"
           id="frm-add-username"
           type="text"
-          placeholder="Nhập nội dung"
+          placeholder="Nhập nội dung câu hỏi"
           autocomplete="off">
-        <button type="button" class=" btn-primary mx-auto my-3 py-2 w-32 bg-blue-300 text-blue-700 hover:bg-blue-400 rounded-md focus:outline-none hover:text-blue-800 shadow-md">Thêm đáp
-          án
+        <div *ngIf="question === null || question === ''">
+          <span class="text-error">Nội dung câu hỏi không được để trống</span>
+        </div>
+      </div>
+      <div class="md:w-full px-3">
+        <div class="mt-2" style="border-bottom: solid 1px "></div>
+      </div>
+
+
+      <div class="md:w-full px-3 mt-3">
+        <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2"
+        >Đáp án A
+        </label>
+        <input
+          [(ngModel)]="answerA"
+          class=" w-100 appearance-none border rounded-md w-full py-2 px-3 my-1 text-gray-600 bg-gray-200 leading-tight outline-none focus:border-green-500"
+          type="text"
+          placeholder="Nhập nội dung đáp án"
+          autocomplete="off">
+      </div>
+      <div class="md:w-full px-3 mt-3">
+        <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2"
+        >Đáp án B
+        </label>
+        <input
+          [(ngModel)]="answerB"
+          class=" w-100 appearance-none border rounded-md w-full py-2 px-3 my-1 text-gray-600 bg-gray-200 leading-tight outline-none focus:border-green-500"
+          type="text"
+          placeholder="Nhập nội dung đáp án"
+          autocomplete="off">
+
+      </div>
+      <div class="md:w-full px-3 mt-3">
+        <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2"
+        >Đáp án C
+        </label>
+        <input
+          [(ngModel)]="answerC"
+          class=" w-100 appearance-none border rounded-md w-full py-2 px-3 my-1 text-gray-600 bg-gray-200 leading-tight outline-none focus:border-green-500"
+          type="text"
+          placeholder="Nhập nội dung đáp án"
+          autocomplete="off">
+
+      </div>
+      <div class="md:w-full px-3 mt-3">
+        <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2"
+        >Đáp án D
+        </label>
+        <input
+          [(ngModel)]="answerD"
+          class=" w-100 appearance-none border rounded-md w-full py-2 px-3 my-1 text-gray-600 bg-gray-200 leading-tight outline-none focus:border-green-500"
+          type="text"
+          placeholder="Nhập nội dung đáp án"
+          autocomplete="off">
+
+        <div class="md:w-full px-3 mt-3 ml-0">
+          <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2"
+          >Chủ đề
+          </label> <br>
+          <input id="THDC" name="check" class="" type="radio" [checked]="questionType === 'THDC'"
+                 (click)="handleChange('THDC')"> Tin học đại cương<br>
+          <input id="TKWC" name="check" class="" type="radio" [checked]="questionType === 'TKWS'"
+                 (click)="handleChange('TKWS')"> Thiết kế website
+        </div>
+        <div class="md:w-full px-3 mt-3 ml-0">
+          <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2"
+          >Đáp án đúng
+          </label> <br>
+          <input id="a" name="check1" class="" type="radio" [checked]="correctAnswer === 'A'" (click)="trueAnswer('a')">
+          Đáp án A<br>
+          <input id="b" name="check1" class="" type="radio" [checked]="correctAnswer === 'B'" (click)="trueAnswer('b')">
+          Đáp án B<br>
+          <input id="c" name="check1" class="" type="radio" [checked]="correctAnswer === 'C'" (click)="trueAnswer('c')">
+          Đáp án C<br>
+          <input id="d" name="check1" class="" type="radio" [checked]="correctAnswer === 'D'" (click)="trueAnswer('d')">
+          Đáp án D<br>
+        </div>
+      </div>
+      <div class="md:w-full px-3 mt-3">
+        <button (click)="save()" type="button"
+                class=" btn-primary mx-auto my-3 py-2 w-32 bg-blue-300 text-blue-700 hover:bg-blue-400 rounded-md focus:outline-none hover:text-blue-800 shadow-md">
+          Lưu
         </button>
       </div>
     </div>
   </div>
 </div>
+
