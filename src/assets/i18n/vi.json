@@ -1,0 +1,29 @@
+{
+  "HOME": {
+    "TITLE": "Trang chủ",
+    "SELECT": "Changer la langue",
+    "DK": "Đăng ký",
+    "LG": "Đăng nhập",
+    "BK" : "Ngân hàng câu hỏi",
+    "EX": "Đề thi,",
+    "LO": "đăng xuất",
+    "TT1": "TRẮC NGHIỆM ONLINE",
+    "TT2": "ĐA DẠNG - THÔNG MINH - CHÍNH XÁC",
+    "EX1": "Đề thi Tin học đại cương",
+    "EX1.1": "Ngân hàng câu hỏi đầy đủ các môn word, sử dụng máy tính cơ bản được trộn tạo đề theo cấu trúc phân loại giúp các em dễ dàng ôn tập online.",
+    "EX2": "Đề thi HTML&CSS",
+    "EX2.1": "Ngân hàng câu hỏi đầy đủ các câu hỏi từ cơ bản đến nâng cao được trộn tạo đề theo cấu trúc phân loại giúp các em dễ dàng ôn tập online.",
+    "EX3": "Đề kiểm tra tổng hợp",
+    "EX3.1" : "Ngân hàng câu hỏi đầy đủ các câu hỏi từ cơ bản đến nâng cao được trộn tạo đề theo cấu trúc phân loại giúp các em dễ dàng ôn tập online.",
+    "BTN-DO": "Làm ngay",
+    "EX4": "Trắc nghiệm IT",
+    "EX4.1": "Hệ thống các bài trắc nghiệm online về tin học văn phòng, tin học cơ bản, lập trình, quản trị hệ thống, chứng chỉ quốc tế giúp các bạn ôn luyện và thi các chứng chỉ về CNTT.",
+    "TT3": "TRẮC NGHIỆM THÔNG MINH",
+    "TT4": "Đa dạng nội dung",
+    "TT5": "Đáp án chi tiết",
+    "TT6": "Ma trận câu hỏi",
+    "TT4.1": "Cung cấp đa dạng nội dung các câu hỏi trắc nghiệm thuộc nhiều lĩnh vực khác nhau",
+    "TT5.1": "Hệ thống sẽ dựa vào ma trận câu hỏi phong phú để tự tổng hợp thành đề trắc nghiệm",
+    "TT6.1": "Hệ thống sẽ dựa vào ma trận câu hỏi phong phú để tự tổng hợp thành đề trắc nghiệm"
+  }
+}

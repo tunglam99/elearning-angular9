@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '@app/_services';
+import {NotificationService} from '@app/_services/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -10,9 +11,9 @@ export class RegisterComponent implements OnInit {
   email: any;
   name: any;
   password: any;
-  checkCreate: boolean = false;
+
   constructor(private authenticationService: AuthenticationService,
-               ) { }
+              private noti: NotificationService) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +25,7 @@ export class RegisterComponent implements OnInit {
       password: this.password
     };
     this.authenticationService.createUser(body).subscribe(() => {
-      this.checkCreate = true;
+      this.noti.showNoti('Tạo tài khoản thành công', 'success')
     });
   }
 }

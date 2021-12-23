@@ -1,7 +1,7 @@
 ﻿import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS, HttpClient} from '@angular/common/http';
 import {NgbModalModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 
 // used to create fake backend
@@ -31,6 +31,9 @@ import {XacNhanNopComponent} from './quiz/xac-nhan-nop/xac-nhan-nop.component';;
 import { XemDiemComponent } from './xem-diem/xem-diem.component'
 ;
 import { XemDiemCacLanThiComponent } from './xem-diem-cac-lan-thi/xem-diem-cac-lan-thi.component'
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -94,7 +97,14 @@ export const toastrConfig = {
     SharedModule,
     NgbTooltipModule,
     ToastrModule.forRoot(toastrConfig),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   declarations: [
     AppComponent,
@@ -127,4 +137,8 @@ export const toastrConfig = {
 })
 
 export class AppModule {
+}
+// required for AOT compilation
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
 }

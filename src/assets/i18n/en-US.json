@@ -1,0 +1,29 @@
+{
+  "HOME": {
+    "TITLE": "Home",
+    "SELECT": "Change language",
+    "DK": "Register",
+    "LG": "Login",
+    "BK" : "Bank Question",
+    "EX": "Exam",
+    "LO": "Logout",
+    "TT1": "ONLINE TEST",
+    "TT2": "DIFFERENT - INTELLIGENT - ACCURATE",
+    "EX1": "General Informatics Exam",
+    "EX1.1": "The question bank is full of word subjects, using basic computers to create questions according to the classification structure to help students easily review online.",
+    "EX2": "HTML CSS Exam Questions",
+    "EX2.1": "The question bank is full of questions from basic to advanced, mixed to create topics according to a classification structure to help students easily review online.",
+    "EX3": "General test questions",
+    "EX3.1" : "The question bank is full of questions from basic to advanced, mixed to create topics according to a classification structure to help students easily review online.",
+    "BTN-DO": "Do it now",
+    "EX4": "IT Quiz",
+    "EX4.1": "The system of online tests on office informatics, basic informatics, programming, system administration, and international certificates helps you to prepare for and test IT certifications.",
+    "TT3": "INTELLIGENT TEST",
+    "TT4": "Content diversity",
+    "TT5": "Detailed answer",
+    "TT6": "Question Matrix",
+    "TT4.1": "Provide a variety of content of multiple choice questions in many different fields",
+    "TT5.1": "The system will rely on a rich matrix of questions to synthesize itself into multiple-choice questions",
+    "TT6.1": "The system will rely on a rich matrix of questions to synthesize itself into multiple-choice questions"
+  }
+}

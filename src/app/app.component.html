@@ -1,13 +1,19 @@
 ﻿<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark">
+<nav class="navbar navbar-expand navbar-dark bg-primary" style="justify-content: space-between;">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" routerLink="/register" *ngIf="!user">Đăng ký</a>
-        <a class="nav-item nav-link" routerLink="/login" *ngIf="!user">Đăng Nhập</a>
-        <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a>
-        <a class="nav-item nav-link" routerLink="/test" *ngIf="isAdmin">Đề thi</a>
-        <a class="nav-item nav-link" (click)="logout()" *ngIf="user">Logout</a>
+        <a style="color: white" class="nav-item nav-link" routerLink="/">{{ 'HOME.TITLE' | translate }}</a>
+        <a style="color: white" class="nav-item nav-link" routerLink="/register" *ngIf="!user"> {{ 'HOME.DK' | translate }}</a>
+        <a style="color: white" class="nav-item nav-link" routerLink="/login" *ngIf="!user">{{ 'HOME.LG' | translate }}</a>
+        <a style="color: white" class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">{{ 'HOME.BK' | translate }}</a>
+        <a style="color: white" class="nav-item nav-link" routerLink="/test" *ngIf="isAdmin">{{ 'HOME.EX' | translate }}</a>
+<!--        <a style="color: white" class="nav-item nav-link" (click)="logout()" *ngIf="user">Logout</a>-->
     </div>
+  <div class="form-inline my-2 my-lg-0">
+    <select class="mr-2" #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+    </select>
+    <button class="btn btn-danger my-2 my-sm-0" type="submit" (click)="logout()" *ngIf="user">{{ 'HOME.LO' | translate }}</button>
+  </div>
 </nav>
 
 <!-- main app container -->
@@ -16,4 +22,10 @@
 </div>
 <notifier-container></notifier-container>
 <!-- credits -->
+<div>
+  <h2>{{ 'HOME.TITLE' | translate }}</h2>
+  <label>
+    {{ 'HOME.SELECT' | translate }}
 
+  </label>
+</div>

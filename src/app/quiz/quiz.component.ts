@@ -64,7 +64,7 @@ export class QuizComponent implements OnInit, OnDestroy {
         answer: $event.key.slice(6),
       });
     } else {
-      exist.answer = $event.key;
+      exist.answer = $event.key.slice(6);
     }
     console.log(this.answer);
   }
