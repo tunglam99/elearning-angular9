@@ -37,7 +37,21 @@ export class AdminService {
     return this.http.post<any>(`${this.API}question/type`, body);
   }
 
-  createTest(body: any) : Observable<any> {
+  createTest(body: any): Observable<any> {
     return this.http.post<any>(`${this.API}test`, body);
   }
+
+  // khach
+  getTestByTestCode(body: any): Observable<any> {
+    return this.http.post<any>(`${this.API}test/guest/test`, body);
+  }
+
+  getQuestionById(id: any): Observable<any> {
+    return this.http.get<any>(`${this.API}question/no-answer/${id}`);
+  }
+
+  listAnswerSendBE(body: any): Observable<any> {
+    return this.http.post<any>(`${this.API}test/guest/answer`, body);
+  }
+
 }

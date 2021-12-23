@@ -24,7 +24,8 @@ import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import {DeleteQuestionComponent} from '@app/admin/delete-question/delete-question.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';;
-import { TestComponent } from './test/test.component'
+import { TestComponent } from './test/test.component';
+import { XacNhanNopComponent } from './quiz/xac-nhan-nop/xac-nhan-nop.component'
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -101,7 +102,8 @@ export const toastrConfig = {
 , ModalAddQuestionComponent,
       DeleteQuestionComponent,
       TestComponent
-            ],
+,
+      XacNhanNopComponent            ],
   entryComponents: [
     ModalAddQuestionComponent, DeleteQuestionComponent
   ],
