@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminService} from '@app/_services/admin.service';
 import {NotificationService} from '@app/_services/notification.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-test',
@@ -16,7 +17,8 @@ export class TestComponent implements OnInit {
   loading: boolean;
 
   constructor(private adminService: AdminService,
-              private notiService: NotificationService,) {
+              private notiService: NotificationService,
+              private translate: TranslateService) {
   }
 
   ngOnInit(): void {
@@ -75,19 +77,19 @@ export class TestComponent implements OnInit {
     };
     console.log(body);
     if (body.type === '' || body.type === null || body.type === undefined) {
-      this.notiService.showNoti('Bạn phải chọn chủ đề của đề thi', 'error');
+      this.notiService.showNoti(this.translate.instant('HOME.noti8'), 'error');
       return;
     }
     if (body.testCode === '' || body.testCode === null || body.testCode === undefined) {
-      this.notiService.showNoti('Bạn phải nhập mã của đề thi', 'error');
+      this.notiService.showNoti(this.translate.instant('HOME.noti9'), 'error');
       return;
     }
     if (body.numberQuestion === '' || body.numberQuestion === null || body.numberQuestion === undefined) {
-      this.notiService.showNoti('Bạn phải nhập số câu hỏi của đề thi', 'error');
+      this.notiService.showNoti(this.translate.instant('HOME.noti10'), 'error');
       return;
     }
     if (body.questionCode.length === 0) {
-      this.notiService.showNoti('Không có câu hỏi nào được chọn', 'error');
+      this.notiService.showNoti(this.translate.instant('HOME.noti11'), 'error');
       return;
     }
     this.loading = true;
@@ -98,7 +100,7 @@ export class TestComponent implements OnInit {
       this.numberQuestion = null;
       this.loading = false;
     }, error => {
-      this.notiService.showNoti('Tạo mới thất bại', 'error');
+      this.notiService.showNoti(this.translate.instant('HOME.noti12'), 'error');
       this.loading = false;
     });
   }

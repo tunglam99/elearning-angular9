@@ -3,6 +3,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {AdminService} from '@app/_services/admin.service';
 import {NotifierService} from 'angular-notifier';
 import {NotificationService} from '@app/_services/notification.service';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class ModalAddQuestionComponent implements OnInit {
   constructor(private NgbActiveModal: NgbActiveModal,
               private adminService: AdminService,
               notifierService: NotifierService,
-              private notiService: NotificationService,) {
+              private notiService: NotificationService,
+              private translate: TranslateService) {
     this.notifier = notifierService;
   }
 
@@ -92,27 +94,31 @@ export class ModalAddQuestionComponent implements OnInit {
       };
 
       if (body.question === '' || body.question === null || body.question === undefined) {
-        this.notiService.showNoti('Bạn phải nhập nội dung câu hỏi', 'error');
+        this.notiService.showNoti(this.translate.instant('HOME.noti1'), 'error');
         return;
       }
       if (body.questionType === undefined) {
-        this.notiService.showNoti('Bạn phải chọn chủ đề câu hỏi', 'error');
+        this.notiService.showNoti(this.translate.instant('HOME.noti2'), 'error');
         return;
       }
       if (body.answer.answerA === undefined || body.answer.answerA === '') {
-        this.notiService.showNoti('Bạn phải nhập đáp án A', 'error');
+        this.notiService.showNoti(this.translate.instant('HOME.noti3'), 'error');
         return;
       }
       if (body.answer.answerB === undefined || body.answer.answerB === '') {
-        this.notiService.showNoti('Bạn phải nhập đáp án B', 'error');
+        this.notiService.showNoti(this.translate.instant('HOME.noti4'), 'error');
         return;
       }
       if (body.answer.answerC === undefined || body.answer.answerC === '') {
-        this.notiService.showNoti('Bạn phải nhập đáp án C', 'error');
+        this.notiService.showNoti(this.translate.instant('HOME.noti5'), 'error');
         return;
       }
       if (body.answer.answerD === undefined || body.answer.answerD === '') {
-        this.notiService.showNoti('Bạn phải nhập đáp án D', 'error');
+        this.notiService.showNoti(this.translate.instant('HOME.noti6'), 'error');
+        return;
+      }
+      if (body.correctAnswer === undefined || body.correctAnswer === '') {
+        this.notiService.showNoti(this.translate.instant('HOME.noti7'), 'error');
         return;
       }
       this.adminService.createQuestion(body).subscribe(() => {
