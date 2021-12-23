@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">Xác nhận nộp bài</h4>
+  <h4 class="modal-title">{{ 'HOME.cfnop' | translate }}</h4>
   <button class="btn-close-h" aria-label="Close" (click)="cancel()">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -7,10 +7,10 @@
 <div class="modal-body">
   <div class="form-delete-h">
     <img class="d-block m-auto" src="/assets/normal_u546.svg">
-    <p class="text-center mt-5">Bạn có đồng ý nộp bài không</p>
+    <p class="text-center mt-5">{{ 'HOME.cfnop_tt' | translate }}</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="cancel()">Hủy bỏ</button>
-    <button type="button" class="btn  btn-primary" id="deleteViolateRules" (click)="onSubmit()">Đồng ý</button>
+    <button type="button" class="btn btn-secondary" (click)="cancel()">{{ 'BANK.cancle' | translate }}</button>
+    <button type="button" class="btn  btn-primary" id="deleteViolateRules" (click)="onSubmit()">{{ 'BANK.ok' | translate }}</button>
   </div>
 </div>

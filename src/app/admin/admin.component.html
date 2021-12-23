@@ -4,10 +4,10 @@
 <!--  </span>-->
 <!--</div>-->
 <div class="card mt-4">
-  <h4 class="card-header">Ngân hàng câu hỏi</h4>
+  <h4 class="card-header">{{ 'HOME.BK' | translate }}</h4>
   <div class="card-body">
     <div class="-mx-3 md:flex mb-2 w-full">
-      <button class="btn btn-primary btn-sm mb-3" (click)="openModalAddQuestion()">Thêm câu hỏi</button>
+      <button class="btn btn-primary btn-sm mb-3" (click)="openModalAddQuestion()">{{ 'BANK.add' | translate }}</button>
       <kendo-grid [data]="listQuestion"
                   [style.maxHeight.px]="500"
                   [kendoGridSelectBy]="'id'"
@@ -21,19 +21,19 @@
             <input type="checkbox" kendoCheckBox>
           </ng-template>
         </kendo-grid-checkbox-column>
-        <kendo-grid-column  title="STT" [width]="45" class="text-center"
+        <kendo-grid-column  title="{{ 'BANK.stt' | translate }}" [width]="45" class="text-center"
                            headerClass="text-center font-weight-bold" editable="false">
           <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">{{rowIndex + 1}}</ng-template>
         </kendo-grid-column>
-        <kendo-grid-command-column  headerClass="text-center font-weight-bold" title="Thao tác" [width]="100" [resizable]="false" sortable="false"
+        <kendo-grid-command-column  headerClass="text-center font-weight-bold" title="{{ 'BANK.action' | translate }}" [width]="100" [resizable]="false" sortable="false"
                                     [columnMenu]="false">
           <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem>
             <div class="d-flex justify-content-around align-items-center">
-              <button placement="top" container="body" ngbTooltip="Sửa câu hỏi"
+              <button placement="top" container="body" ngbTooltip="{{ 'BANK.edit' | translate }}"
                       kendoGridEditCommand class="btn btn-primary button-icon" (click)="edit(dataItem)">
                 <i class="fa fa-pencil"></i>
               </button>
-              <button placement="top" container="body" ngbTooltip="Xóa câu hỏi"
+              <button placement="top" container="body" ngbTooltip="{{ 'BANK.delete' | translate }}"
                       kendoGridEditCommand class="btn btn-danger button-icon" (click)="delete(dataItem)">
                 <i class="fa fa-trash"></i>
               </button>
@@ -41,15 +41,15 @@
           </ng-template>
         </kendo-grid-command-column>
         <kendo-grid-column [width]="200" field="question" headerClass="text-center font-weight-bold" editor="text"
-                           title="Nội dung câu hỏi">
+                           title="{{ 'BANK.content' | translate }}">
 
         </kendo-grid-column>
         <kendo-grid-column [width]="200" field="correctAnswer" headerClass="text-center font-weight-bold" editor="text"
-                           title="Đáp án đúng">
+                           title="{{ 'BANK.correct' | translate }}">
 
         </kendo-grid-column>
         <kendo-grid-column [width]="200" field="questionType" headerClass="text-center font-weight-bold" editor="text"
-                           title="Loại câu hỏi">
+                           title="{{ 'BANK.type' | translate }}">
           <ng-template kendoGridCellTemplate let-dataItem>
             {{getLogType(dataItem.questionType)}}
           </ng-template>

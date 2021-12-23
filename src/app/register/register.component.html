@@ -1,7 +1,7 @@
 <div class="container register-form mt-5">
   <div class="form">
     <div class="note">
-      <p>Đăng ký tài khoản dự thi</p>
+      <p>{{ 'HOME.dk' | translate }}</p>
     </div>
 
     <div class="form-content">
@@ -11,19 +11,19 @@
             <input [(ngModel)]="email" type="text" class="form-control" placeholder="Email *" value=""/>
           </div>
           <div class="form-group">
-            <input [(ngModel)]="name" type="text" class="form-control" placeholder="Họ và tên *" value=""/>
+            <input [(ngModel)]="name" type="text" class="form-control" placeholder="{{ 'HOME.name' | translate }} *" value=""/>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <input [(ngModel)]="password" type="password" class="form-control" placeholder="Mật khẩu *" value=""/>
+            <input [(ngModel)]="password" type="password" class="form-control" placeholder="{{ 'HOME.pw' | translate }} *" value=""/>
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" placeholder="Xác nhận mật khẩu *" value=""/>
+            <input type="password" class="form-control" placeholder="{{ 'HOME.mkcf' | translate }} *" value=""/>
           </div>
         </div>
       </div>
-      <button type="button" class="btn btn-primary" (click)="onSubmit()">Đăng ký</button>
+      <button type="button" class="btn btn-primary" (click)="onSubmit()">{{ 'HOME.DK' | translate }}</button>
     </div>
   </div>
 </div>

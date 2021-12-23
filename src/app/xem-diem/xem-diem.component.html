@@ -1,6 +1,6 @@
 <div class="justify-content-center" style="text-align: center; margin-top: 210px">
-  <h1 class="mt-20">Chúc mừng bạn hoàn thành bài thi</h1>
-  <h2><b>Điểm của bạn là : <span style="color: red">{{point}}</span></b></h2>
-  <button class="btn btn-primary mt-3" [routerLink]="['/home']">Quay lại trang chủ</button>
+  <h1 class="mt-20">{{ 'HOME.chucmung' | translate }}</h1>
+  <h2><b>{{ 'HOME.diem' | translate }} : <span style="color: red">{{point}}</span></b></h2>
+  <button class="btn btn-primary mt-3" [routerLink]="['/home']">{{ 'HOME.ql' | translate }}</button>
 </div>
 
