@@ -1,6 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {QuizComponent} from '@app/quiz/quiz.component';
 
 @Component({
   selector: 'app-xac-nhan-nop',
@@ -8,11 +7,13 @@ import {QuizComponent} from '@app/quiz/quiz.component';
   styleUrls: ['./xac-nhan-nop.component.less']
 })
 export class XacNhanNopComponent implements OnInit {
-  @ViewChild(QuizComponent) quizCom: QuizComponent;
-  constructor(public _NgbActiveModal: NgbActiveModal,) { }
+
+  constructor(public _NgbActiveModal: NgbActiveModal,) {
+  }
 
   ngOnInit(): void {
   }
+
   get activeModal() {
     return this._NgbActiveModal;
   }
@@ -22,6 +23,6 @@ export class XacNhanNopComponent implements OnInit {
   }
 
   onSubmit() {
-    this.quizCom.submit();
+    this.activeModal.close('ok');
   }
 }

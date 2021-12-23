@@ -28,7 +28,12 @@
 <!--  </div>-->
 <!--  <button class="btn btn-primary">Nộp bài</button>-->
 <!--</div>-->
+<div class="flex justify-between px-4 py-4 bg-white shadow-lg rounded-md sticky z-30" style="top: -8px">
+  <div>Thời gian còn lại là : <span class="font-bold text-xl text-error">{{display}}</span></div>
+  <div class="">
+  </div>
 
+</div>
 
 <div class="container mt-5">
   <div
@@ -66,8 +71,9 @@
       </div>
     </div>
   </div>
-  <div class="question bg-white p-3 border-bottom">
-    <button class="btn btn-primary" (click)="submit()">Nộp bài</button>
+  <div class="question bg-white p-3 ">
+    <div class="col-md-10 col-lg-10">
+      <button class="btn btn-primary" style="margin-left: 61px;" (click)="openModalXacNhan()">Nộp bài</button>
+    </div>
   </div>
-
 </div>

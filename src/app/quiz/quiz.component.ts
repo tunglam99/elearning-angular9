@@ -1,21 +1,35 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AdminService} from '@app/_services/admin.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {XacNhanNopComponent} from '@app/quiz/xac-nhan-nop/xac-nhan-nop.component';
+import {Router} from '@angular/router';
+import {Observable, Subscription, timer} from 'rxjs';
+import {map, take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-quiz',
   templateUrl: './quiz.component.html',
   styleUrls: ['./quiz.component.scss']
 })
-export class QuizComponent implements OnInit {
+export class QuizComponent implements OnInit, OnDestroy {
+  // countDown: Subscription;
+  // counter: number;
+  // tick = 1000;
+  intervalId = 0;
+  message = '';
+  seconds = 10;
 
+
+  display: any;
   constructor(private adminService: AdminService,
-              private modalService: NgbModal,) {
+              private modalService: NgbModal,
+              private router: Router,) {
+    this.timer(1);
   }
 
   listQuestion = [];
   answer = [];
+
   ngOnInit(): void {
     const body = {
       testCode: 'TKWS-2',
@@ -34,7 +48,13 @@ export class QuizComponent implements OnInit {
       }
       console.log(this.listQuestion);
     });
+    // this.countDown();
   }
+
+  ngOnDestroy(): void {
+    // this.clearTimer();
+  }
+  // clearTimer() { clearInterval(this.intervalId); }
 
   change($event, id) {
     const exist = this.answer.find((x) => x.id === id);
@@ -57,8 +77,21 @@ export class QuizComponent implements OnInit {
     };
     this.adminService.listAnswerSendBE(body).subscribe(data => {
       console.log(data);
+      this.router.navigateByUrl(`/end/${data}`);
     });
   }
+
+  // startTimer() {
+  //   this.countDown = timer(0, this.tick).subscribe(() => {
+  //     if (this.counter > 0) {
+  //       --this.counter;
+  //     } else {
+  //       this.counter = 0;
+  //       this.submit();
+  //     }
+  //   });
+  // }
+
   openModalXacNhan() {
     const modalRef = this.modalService.open(XacNhanNopComponent, {
       size: 'sm',
@@ -67,5 +100,49 @@ export class QuizComponent implements OnInit {
       backdropClass: 'light-blue-backdrop',
       keyboard: false
     });
+    modalRef.result.then(result => {
+      if (result === 'ok') {
+        this.submit();
+      }
+    });
+  }
+
+  // private countDown() {
+  //   // this.clearTimer();
+  //   this.intervalId = window.setInterval(() => {
+  //     this.seconds -= 1;
+  //     if (this.seconds === 0) {
+  //       this.submit();
+  //     } else {
+  //       if (this.seconds < 0) { this.seconds = 10; } // reset
+  //       this.message = `T-${this.seconds} seconds and counting`;
+  //     }
+  //   }, 1000);
+  // }
+
+  timer(minute) {
+    // let minute = 1;
+    let seconds: number = minute * 60;
+    let textSec: any = "0";
+    let statSec: number = 60;
+
+    const prefix = minute < 10 ? "0" : "";
+
+    const timer = setInterval(() => {
+      seconds--;
+      if (statSec != 0) statSec--;
+      else statSec = 59;
+
+      if (statSec < 10) {
+        textSec = "0" + statSec;
+      } else textSec = statSec;
+
+      this.display = `${prefix}${Math.floor(seconds / 60)}:${textSec}`;
+
+      if (seconds == 0) {
+        this.submit();
+        clearInterval(timer);
+      }
+    }, 1000);
   }
 }
