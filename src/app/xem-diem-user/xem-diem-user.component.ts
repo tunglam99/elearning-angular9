@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'app-xem-diem',
-  templateUrl: './xem-diem.component.html',
-  styleUrls: ['./xem-diem.component.less']
+  selector: 'app-xem-diem-user',
+  templateUrl: './xem-diem-user.component.html',
+  styleUrls: ['./xem-diem-user.component.less']
 })
-export class XemDiemComponent implements OnInit {
+export class XemDiemUserComponent implements OnInit {
+
   point: any;
   numberQuestion: any
   constructor(private route: ActivatedRoute,) { }

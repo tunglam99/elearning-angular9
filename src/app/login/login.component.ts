@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate([this.returnUrl]);
                 },
                 error => {
-                    this.noti.showNoti('Đăng nhập thất bại',error)
+                    this.noti.showNoti('Đăng nhập thất bại','error');
                     this.loading = false;
                 });
     }

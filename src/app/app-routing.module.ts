@@ -10,6 +10,9 @@ import {RegisterComponent} from '@app/register/register.component';
 import {QuizComponent} from '@app/quiz/quiz.component';
 import {TestComponent} from '@app/test/test.component';
 import {XemDiemComponent} from '@app/xem-diem/xem-diem.component';
+import {QuizUserComponent} from '@app/quiz-user/quiz-user.component';
+import {XemDiemUserComponent} from '@app/xem-diem-user/xem-diem-user.component';
+import {KiThiDangDienRaComponent} from '@app/ki-thi-dang-dien-ra/ki-thi-dang-dien-ra.component';
 
 const routes: Routes = [
   {
@@ -41,8 +44,22 @@ const routes: Routes = [
     component: QuizComponent
   },
   {
-    path: 'end/:point',
+    path: 'end/:point/:numberQuestion',
     component: XemDiemComponent
+  },
+  {
+    path: 'quiz-user',
+    component: QuizUserComponent
+  },
+  {
+    path: 'end-user/:point/:numberQuestion',
+    component: XemDiemUserComponent
+  },
+  {
+    path: 'ki-thi',
+    component: KiThiDangDienRaComponent,
+    // canActivate: [AuthGuard],
+    data: {roles: [Role.User]}
   },
 
   // otherwise redirect to home

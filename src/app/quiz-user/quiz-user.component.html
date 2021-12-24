@@ -1,0 +1,49 @@
+
+<div class="flex justify-between px-4 py-4 bg-white shadow-lg rounded-md sticky z-30" style="top: -8px">
+  <div>{{ 'HOME.time' | translate }} : <span class="font-bold text-xl text-error">{{display}}</span></div>
+  <div class="">
+  </div>
+
+</div>
+<div class="container mt-5">
+  <div
+    class="d-flex justify-content-center row mt-5"
+    *ngFor="let ques of listQuestion; let i = index"
+  >
+    <div class="col-md-10 col-lg-10">
+      <div class="border">
+        <div class="question bg-white p-3 border-bottom">
+          <div class="d-flex flex-row align-items-center question-title">
+            <h3 class="text-danger" style="width: 10%">Câu {{ i + 1 }}</h3>
+            <h5 class="mt-1 ml-2">{{ ques.question }}</h5>
+            <div class="question bg-white p-3 border-bottom">
+
+            </div>
+            <!--            <span *ngFor="let q of ques.answer | keyvalue; let i = index">-->
+            <!--            </span>-->
+          </div>
+        </div>
+        <div class="question bg-white p-3 border-bottom">
+          <div
+            class="ans ml-2"
+            *ngFor="let q of ques.answer | keyvalue; let i = index"
+          >
+            <input
+              type="radio"
+              name="{{ques.id}}"
+              id="a"
+              value="{{ q.key }}"
+              (change)="change(q, ques.id)"
+              class="mr-2"
+            /><span>{{ q.value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="question bg-white p-3 ">
+    <div class="col-md-10 col-lg-10">
+      <button class="btn btn-primary" style="margin-left: 61px;" (click)="openModalXacNhan()">{{ 'HOME.nop' | translate }}</button>
+    </div>
+  </div>
+</div>

@@ -28,6 +28,10 @@
                            title="{{ 'BANK.content' | translate }}">
 
         </kendo-grid-column>
+        <kendo-grid-column [width]="200" field="difficulty" headerClass="text-center font-weight-bold" editor="text"
+                           title="{{ 'Mức độ câu hỏi' | translate }}">
+
+        </kendo-grid-column>
         <kendo-grid-column [width]="200" field="correctAnswer" headerClass="text-center font-weight-bold" editor="text"
                            title="{{ 'BANK.correct' | translate }}">
 
@@ -49,6 +53,10 @@
       <div class="mt-3">
         {{ 'HOME.soluongcauhoi' | translate }}<br>
         <input type="number" [(ngModel)]="numberQuestion">
+      </div>
+      <div class="mt-3">
+        {{ 'Thời gian làm bài' | translate }}<br>
+        <input type="number" [(ngModel)]="time">
       </div>
       <div class="mt-3">
         <button class="btn btn-primary" (click)="save()">{{ 'HOME.addexam' | translate }}</button>

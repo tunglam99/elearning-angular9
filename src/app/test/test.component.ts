@@ -15,7 +15,7 @@ export class TestComponent implements OnInit {
   testCode: any;
   numberQuestion: any;
   loading: boolean;
-
+  time: any;
   constructor(private adminService: AdminService,
               private notiService: NotificationService,
               private translate: TranslateService) {
@@ -74,6 +74,7 @@ export class TestComponent implements OnInit {
       numberQuestion: this.numberQuestion,
       questionCode: this.mySelection,
       type: this.questionType,
+      time: this.time
     };
     console.log(body);
     if (body.type === '' || body.type === null || body.type === undefined) {
@@ -98,6 +99,7 @@ export class TestComponent implements OnInit {
       this.mySelection = [];
       this.testCode = null;
       this.numberQuestion = null;
+      this.time = null;
       this.loading = false;
     }, error => {
       this.notiService.showNoti(this.translate.instant('HOME.noti12'), 'error');

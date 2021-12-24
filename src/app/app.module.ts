@@ -32,7 +32,12 @@ import { XemDiemComponent } from './xem-diem/xem-diem.component'
 ;
 import { XemDiemCacLanThiComponent } from './xem-diem-cac-lan-thi/xem-diem-cac-lan-thi.component'
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';;
+import { QuizUserComponent } from './quiz-user/quiz-user.component'
+;
+import { XemDiemUserComponent } from './xem-diem-user/xem-diem-user.component'
+;
+import { KiThiDangDienRaComponent } from './ki-thi-dang-dien-ra/ki-thi-dang-dien-ra.component'
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -122,7 +127,10 @@ export const toastrConfig = {
     ,
     XacNhanNopComponent,
     XemDiemComponent,
-    XemDiemCacLanThiComponent ],
+    XemDiemCacLanThiComponent ,
+    QuizUserComponent, XemDiemUserComponent,
+    KiThiDangDienRaComponent]
+    ,
   entryComponents: [
     ModalAddQuestionComponent, DeleteQuestionComponent, XacNhanNopComponent
   ],

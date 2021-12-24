@@ -43,7 +43,7 @@ export class AdminService {
 
   // khach
   getTestByTestCode(body: any): Observable<any> {
-    return this.http.post<any>(`${this.API}test/guest/test`, body);
+    return this.http.post<any>(`${this.API}test/test/guest`, body);
   }
 
   getQuestionById(id: any): Observable<any> {
@@ -51,7 +51,16 @@ export class AdminService {
   }
 
   listAnswerSendBE(body: any): Observable<any> {
-    return this.http.post<any>(`${this.API}test/guest/answer`, body);
+    return this.http.post<any>(`${this.API}test/answer/guest`, body);
   }
 
+  // thi cho user
+
+  getQuesForUser(body:any) {
+    return this.http.post<any>(`${this.API}test/test/user`, body);
+  }
+
+  listAnswerSendBEForUser(body: any): Observable<any> {
+    return this.http.post<any>(`${this.API}test/answer/user`, body);
+  }
 }

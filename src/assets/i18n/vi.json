@@ -1,5 +1,6 @@
 {
   "HOME": {
+    "BTN-DO-TRY": "Làm thử ngay",
     "noti8": "Bạn phải chọn chủ đề của đề thi",
     "noti9": "Bạn phải nhập mã của đề thi",
     "noti10": "Bạn phải nhập số câu hỏi của đề thi",
@@ -77,7 +78,7 @@
     "save": "Lưu",
     "nhapcontent": "Nhập nội dung câu hỏi",
     "cf": "Bạn có đồng ý xóa không",
-    "cancle": ">Hủy bỏ",
+    "cancle": "Hủy bỏ",
     "ok": "Đồng ý"
   }
 }

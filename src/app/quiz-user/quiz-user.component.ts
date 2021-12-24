@@ -1,43 +1,30 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AdminService} from '@app/_services/admin.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {XacNhanNopComponent} from '@app/quiz/xac-nhan-nop/xac-nhan-nop.component';
 import {Router} from '@angular/router';
-import {Observable, Subscription, timer} from 'rxjs';
-import {map, take} from 'rxjs/operators';
+import {XacNhanNopComponent} from '@app/quiz/xac-nhan-nop/xac-nhan-nop.component';
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.scss']
+  selector: 'app-quiz-user',
+  templateUrl: './quiz-user.component.html',
+  styleUrls: ['./quiz-user.component.less']
 })
-export class QuizComponent implements OnInit, OnDestroy {
-
-
-
+export class QuizUserComponent implements OnInit, OnDestroy {
   display: any;
+  numberQuestion: any;
   constructor(private adminService: AdminService,
               private modalService: NgbModal,
               private router: Router,) {
+    this.timer(10);
   }
 
   listQuestion = [];
   answer = [];
-  time: number;
-  numberQuestion: any;
+
   ngOnInit(): void {
-    const body = {
-      testCode: 'TKWS-LAM-THU',
-      numberQuestion: 0,
-      questionCode: [],
-      type: 'THDC'
-    };
-    this.adminService.getTestByTestCode(body).subscribe(data => {
+    const body = {};
+    this.adminService.getQuesForUser(body).subscribe(data => {
       this.numberQuestion = data.questionCode.length;
-      this.time = data.time;
-      this.timer(this.time);
-      console.log(this.time);
-      console.log(10);
       console.log(data);
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < data.questionCode.length; i++) {
@@ -49,7 +36,6 @@ export class QuizComponent implements OnInit, OnDestroy {
       console.log(this.listQuestion);
     });
   }
-
   ngOnDestroy(): void {
     clearInterval();
   }
@@ -73,9 +59,9 @@ export class QuizComponent implements OnInit, OnDestroy {
       numberQuestion: 2,
       answer: this.answer
     };
-    this.adminService.listAnswerSendBE(body).subscribe(data => {
+    this.adminService.listAnswerSendBEForUser(body).subscribe(data => {
       console.log(data);
-      this.router.navigateByUrl(`/end/${data}/${this.numberQuestion}`);
+      this.router.navigateByUrl(`/end-user/${data.score}/${this.numberQuestion}`);
     });
   }
 
@@ -119,4 +105,5 @@ export class QuizComponent implements OnInit, OnDestroy {
       }
     }, 1000);
   }
+
 }

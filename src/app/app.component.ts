@@ -29,6 +29,9 @@ export class AppComponent implements OnInit{
   get isAdmin() {
     return this.user && this.user.role === Role.Admin;
   }
+  get isUser() {
+    return this.user && this.user.role === Role.User;
+  }
 
   logout() {
     this.authenticationService.logout();

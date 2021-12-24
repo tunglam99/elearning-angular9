@@ -20,6 +20,7 @@ export class ModalAddQuestionComponent implements OnInit {
   answerD: any;
   questionType: any;
   correctAnswer: any;
+  levelQ: any;
   @Input() selectedItem: any;
 
   constructor(private NgbActiveModal: NgbActiveModal,
@@ -74,7 +75,8 @@ export class ModalAddQuestionComponent implements OnInit {
           answerC: this.answerC,
           answerD: this.answerD,
         },
-        correctAnswer: this.correctAnswer
+        correctAnswer: this.correctAnswer,
+        difficulty: this.levelQ
       };
       this.adminService.update(id, put).subscribe(() => {
         this.notiService.showUpdate();
@@ -90,7 +92,8 @@ export class ModalAddQuestionComponent implements OnInit {
           answerC: this.answerC,
           answerD: this.answerD,
         },
-        correctAnswer: this.correctAnswer
+        correctAnswer: this.correctAnswer,
+        difficulty: this.levelQ
       };
 
       if (body.question === '' || body.question === null || body.question === undefined) {
@@ -144,4 +147,13 @@ export class ModalAddQuestionComponent implements OnInit {
   // showSuccess() {
   //   this.toastr.success('Hello world!', 'Toastr fun!');
   // }
+  level(level: string) {
+    if (level === 'easy') {
+      this.levelQ = 'Easy';
+    } else if (level === 'medium') {
+      this.levelQ = 'Medium';
+    } else if (level === 'hard') {
+      this.levelQ = 'Hard';
+    }
+  }
 }

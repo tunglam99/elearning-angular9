@@ -96,6 +96,17 @@
           <input id="d" name="check1" class="" type="radio" [checked]="correctAnswer === 'D'" (click)="trueAnswer('d')">
           {{ 'BANK.d' | translate }}<br>
         </div>
+        <div class="md:w-full px-3 mt-3 ml-0">
+          <label class="block uppercase tracking-wide text-gray-600 text-xs font-bold mb-2"
+          >{{ 'Mức độ câu hỏi' | translate }}
+          </label> <br>
+          <input id="ez" name="dokho" class="" type="radio" [checked]="levelQ === 'Easy'" (click)="level('easy')">
+          {{ 'Dễ' | translate }}<br>
+          <input id="medi" name="dokho" class="" type="radio" [checked]="levelQ === 'Medium'" (click)="level('medium')">
+          {{ 'Trung bình' | translate }}<br>
+          <input id="hard" name="dokho" class="" type="radio" [checked]="levelQ === 'Hard'" (click)="level('hard')">
+          {{ 'Khó' | translate }}<br>
+        </div>
       </div>
       <div class="md:w-full px-3 mt-3">
         <button (click)="save()" type="button"
