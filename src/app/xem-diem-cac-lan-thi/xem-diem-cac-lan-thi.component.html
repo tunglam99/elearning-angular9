@@ -1,1 +1,24 @@
-<p>xem-diem-cac-lan-thi works!</p>
+<div class="card mt-4">
+  <h4 class="card-header">{{ 'Bảng điểm các lần thi trước đó' | translate }}</h4>
+  <div class="card-body">
+    <div class="-mx-3 md:flex mb-2 w-full">
+      <kendo-grid [data]="listView"
+                  [style.maxHeight.px]="500"
+                  [selectable]="{checkboxOnly : true}">
+        <kendo-grid-column  title="{{ 'BANK.stt' | translate }}" [width]="45" class="text-center"
+                            headerClass="text-center font-weight-bold" editable="false">
+          <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">{{rowIndex + 1}}</ng-template>
+        </kendo-grid-column>
+
+        <kendo-grid-column [width]="100" field="score" headerClass="text-center font-weight-bold" editor="text"
+                           title="{{ 'Điểm số' | translate }}">
+
+        </kendo-grid-column>
+
+      </kendo-grid>
+      <div class="custom-loading-h">
+        <div *ngIf="loading" class="k-i-loading"></div>
+      </div>
+    </div>
+  </div>
+</div>

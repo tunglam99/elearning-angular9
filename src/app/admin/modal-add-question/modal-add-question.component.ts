@@ -42,6 +42,7 @@ export class ModalAddQuestionComponent implements OnInit {
       this.answerC = this.selectedItem.answer.answerC;
       this.answerD = this.selectedItem.answer.answerD;
       this.correctAnswer = this.selectedItem.correctAnswer;
+      this.levelQ = this.selectedItem.difficulty;
     }
     console.log(this.correctAnswer);
     console.log(this.questionType);

@@ -13,6 +13,8 @@ import {XemDiemComponent} from '@app/xem-diem/xem-diem.component';
 import {QuizUserComponent} from '@app/quiz-user/quiz-user.component';
 import {XemDiemUserComponent} from '@app/xem-diem-user/xem-diem-user.component';
 import {KiThiDangDienRaComponent} from '@app/ki-thi-dang-dien-ra/ki-thi-dang-dien-ra.component';
+import {XemDiemCacLanThiComponent} from '@app/xem-diem-cac-lan-thi/xem-diem-cac-lan-thi.component';
+import {ListDeThiComponent} from '@app/list-de-thi/list-de-thi.component';
 
 const routes: Routes = [
   {
@@ -22,13 +24,25 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {roles: [Role.Admin]}
   },
   {
     path: 'test',
+    component: ListDeThiComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
+    path: 'add-test',
     component: TestComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
+    data: {roles: [Role.Admin]}
+  },
+  {
+    path: 'add-test/:dataItem',
+    component: TestComponent,
+    canActivate: [AuthGuard],
     data: {roles: [Role.Admin]}
   },
   {
@@ -58,6 +72,12 @@ const routes: Routes = [
   {
     path: 'ki-thi',
     component: KiThiDangDienRaComponent,
+    // canActivate: [AuthGuard],
+    data: {roles: [Role.User]}
+  },
+  {
+    path: 'xem-diem-cac-lan-thi',
+    component: XemDiemCacLanThiComponent,
     // canActivate: [AuthGuard],
     data: {roles: [Role.User]}
   },

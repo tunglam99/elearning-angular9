@@ -38,6 +38,10 @@ import { QuizUserComponent } from './quiz-user/quiz-user.component'
 import { XemDiemUserComponent } from './xem-diem-user/xem-diem-user.component'
 ;
 import { KiThiDangDienRaComponent } from './ki-thi-dang-dien-ra/ki-thi-dang-dien-ra.component'
+;
+import { ListDeThiComponent } from './list-de-thi/list-de-thi.component'
+;
+import { DeleteDeThiComponent } from './list-de-thi/delete-de-thi/delete-de-thi.component'
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -129,10 +133,13 @@ export const toastrConfig = {
     XemDiemComponent,
     XemDiemCacLanThiComponent ,
     QuizUserComponent, XemDiemUserComponent,
-    KiThiDangDienRaComponent]
-    ,
+    KiThiDangDienRaComponent,
+    ListDeThiComponent,
+    DeleteDeThiComponent],
+
   entryComponents: [
-    ModalAddQuestionComponent, DeleteQuestionComponent, XacNhanNopComponent
+    ModalAddQuestionComponent, DeleteQuestionComponent, XacNhanNopComponent,
+    DeleteDeThiComponent
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

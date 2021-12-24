@@ -56,11 +56,31 @@ export class AdminService {
 
   // thi cho user
 
-  getQuesForUser(body:any) {
+  getQuesForUser(body: any) {
     return this.http.post<any>(`${this.API}test/test/user`, body);
   }
 
   listAnswerSendBEForUser(body: any): Observable<any> {
     return this.http.post<any>(`${this.API}test/answer/user`, body);
+  }
+
+  xemdiemcaclanthi(): Observable<any> {
+    return this.http.get<any>(`${this.API}test/answer/user`);
+  }
+
+  listDe(): Observable<any> {
+    return this.http.get<any>(`${this.API}test`);
+  }
+
+  deleteDeThi(id: string): Observable<any> {
+    return this.http.delete(`${this.API}test/${id}`);
+  }
+
+  getdetaiDeThi(id: any) : Observable<any> {
+    return this.http.get<any>(`${this.API}test/${id}`);
+  }
+
+  updateDethi(id: any, body: any) : Observable<any> {
+    return this.http.put<any>(`${this.API}test/${id}/update`, body);
   }
 }

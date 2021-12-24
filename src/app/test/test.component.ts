@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AdminService} from '@app/_services/admin.service';
 import {NotificationService} from '@app/_services/notification.service';
 import {TranslateService} from '@ngx-translate/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -16,13 +17,39 @@ export class TestComponent implements OnInit {
   numberQuestion: any;
   loading: boolean;
   time: any;
+  idUpdate: any;
+  listQuestion = [];
   constructor(private adminService: AdminService,
               private notiService: NotificationService,
-              private translate: TranslateService) {
+              private translate: TranslateService,
+              private route: ActivatedRoute,
+              private router: Router,) {
   }
 
   ngOnInit(): void {
-
+    this.route.params.subscribe(dataItem => {
+      this.idUpdate = dataItem.dataItem;
+      if (this.idUpdate) {
+        this.adminService.getdetaiDeThi(this.idUpdate).subscribe(data => {
+          this.questionType = data.type;
+          this.testCode = data.testCode;
+          this.numberQuestion = data.numberQuestion;
+          this.time = data.time;
+          // tslint:disable-next-line:prefer-for-of
+          for (let i = 0; i < data.questionCode.length; i++) {
+            console.log(data.questionCode[i]);
+            this.adminService.getQuestionById(data.questionCode[i]).subscribe(question => {
+              this.listQuestion.push(question);
+            });
+          }
+          this.dataGrid = this.listQuestion;
+          console.log(this.listQuestion);
+        });
+      }
+      console.log(dataItem);
+      // this.numberQuestion = point.numberQuestion;
+      // console.log(point);
+    });
   }
 
   onChange(row) {
@@ -93,17 +120,33 @@ export class TestComponent implements OnInit {
       this.notiService.showNoti(this.translate.instant('HOME.noti11'), 'error');
       return;
     }
-    this.loading = true;
-    this.adminService.createTest(body).subscribe(() => {
-      this.notiService.showSuccess();
-      this.mySelection = [];
-      this.testCode = null;
-      this.numberQuestion = null;
-      this.time = null;
-      this.loading = false;
-    }, error => {
-      this.notiService.showNoti(this.translate.instant('HOME.noti12'), 'error');
-      this.loading = false;
-    });
+    if (this.idUpdate) {
+      this.loading = true;
+      this.adminService.updateDethi(this.idUpdate, body).subscribe(() => {
+        this.notiService.showUpdate();
+        this.mySelection = [];
+        this.testCode = null;
+        this.numberQuestion = null;
+        this.time = null;
+        this.loading = false;
+        this.router.navigateByUrl(`/test`);
+      }, error => {
+        this.notiService.showNoti(this.translate.instant('HOME.noti12'), 'error');
+        this.loading = false;
+      });
+    } else {
+      this.loading = true;
+      this.adminService.createTest(body).subscribe(() => {
+        this.notiService.showSuccess();
+        this.mySelection = [];
+        this.testCode = null;
+        this.numberQuestion = null;
+        this.time = null;
+        this.loading = false;
+      }, error => {
+        this.notiService.showNoti(this.translate.instant('HOME.noti12'), 'error');
+        this.loading = false;
+      });
+    }
   }
 }
