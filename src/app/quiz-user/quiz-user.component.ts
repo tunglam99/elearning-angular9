@@ -22,8 +22,7 @@ export class QuizUserComponent implements OnInit, OnDestroy {
   answer = [];
 
   ngOnInit(): void {
-    const body = {};
-    this.adminService.getQuesForUser(body).subscribe(data => {
+    this.adminService.getQuesForUser().subscribe(data => {
       this.numberQuestion = data.questionCode.length;
       console.log(data);
       // tslint:disable-next-line:prefer-for-of

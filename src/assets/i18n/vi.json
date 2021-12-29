@@ -1,5 +1,16 @@
 {
   "HOME": {
+    "exam": "Kỳ thi đang diễn ra",
+    "point": "Xem điểm các lần thi",
+    "exam-ck": "Kiểm tra cuối kỳ",
+    "Point-xem" : "Điểm số",
+    "table-point" : "Bảng điểm các lần thi trước đó",
+    "back": "Quay lại",
+    "timeT": "Thời gian làm bài",
+    "ez": "Dễ",
+    "tb": "Trung Bình",
+    "hard": "Khó",
+    "levelQ": "Mức độ câu hỏi",
     "BTN-DO-TRY": "Làm thử ngay",
     "noti8": "Bạn phải chọn chủ đề của đề thi",
     "noti9": "Bạn phải nhập mã của đề thi",

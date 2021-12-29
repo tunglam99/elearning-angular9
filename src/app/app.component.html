@@ -6,8 +6,8 @@
         <a style="color: white" class="nav-item nav-link" routerLink="/login" *ngIf="!user">{{ 'HOME.LG' | translate }}</a>
         <a style="color: white" class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">{{ 'HOME.BK' | translate }}</a>
         <a style="color: white" class="nav-item nav-link" routerLink="/test" *ngIf="isAdmin">{{ 'HOME.EX' | translate }}</a>
-        <a style="color: white" class="nav-item nav-link" routerLink="/ki-thi" *ngIf="isUser">{{ 'Kỳ thi đang diễn ra' | translate }}</a>
-        <a style="color: white" class="nav-item nav-link" routerLink="/xem-diem-cac-lan-thi" *ngIf="isUser">{{ 'Xem điểm các lần thi' | translate }}</a>
+        <a style="color: white" class="nav-item nav-link" routerLink="/ki-thi" *ngIf="isUser">{{ 'HOME.exam' | translate }}</a>
+        <a style="color: white" class="nav-item nav-link" routerLink="/xem-diem-cac-lan-thi" *ngIf="isUser">{{ 'HOME.point' | translate }}</a>
 <!--        <a style="color: white" class="nav-item nav-link" (click)="logout()" *ngIf="user">Logout</a>-->
     </div>
   <div class="form-inline my-2 my-lg-0">

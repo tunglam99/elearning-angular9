@@ -1,5 +1,5 @@
 <div class="card mt-4">
-  <h4 class="card-header">{{ 'Bảng điểm các lần thi trước đó' | translate }}</h4>
+  <h4 class="card-header">{{ 'HOME.table-point' | translate }}</h4>
   <div class="card-body">
     <div class="-mx-3 md:flex mb-2 w-full">
       <kendo-grid [data]="listView"
@@ -11,7 +11,7 @@
         </kendo-grid-column>
 
         <kendo-grid-column [width]="100" field="score" headerClass="text-center font-weight-bold" editor="text"
-                           title="{{ 'Điểm số' | translate }}">
+                           title="{{ 'HOME.Point-xem' | translate }}">
 
         </kendo-grid-column>
 

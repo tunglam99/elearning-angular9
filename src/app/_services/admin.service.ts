@@ -56,8 +56,8 @@ export class AdminService {
 
   // thi cho user
 
-  getQuesForUser(body: any) {
-    return this.http.post<any>(`${this.API}test/test/user`, body);
+  getQuesForUser() {
+    return this.http.get<any>(`${this.API}test/test/user`);
   }
 
   listAnswerSendBEForUser(body: any): Observable<any> {

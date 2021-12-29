@@ -72,13 +72,13 @@ const routes: Routes = [
   {
     path: 'ki-thi',
     component: KiThiDangDienRaComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {roles: [Role.User]}
   },
   {
     path: 'xem-diem-cac-lan-thi',
     component: XemDiemCacLanThiComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     data: {roles: [Role.User]}
   },
 
