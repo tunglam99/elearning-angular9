@@ -4,6 +4,15 @@
 <!--  </span>-->
 <!--</div>-->
 <div class="card mt-4">
+  <h4 class="card-header">{{ 'Tìm kiếm' | translate }}</h4>
+  <div class="card-body">
+    <input type="text" class="form-control" [(ngModel)]="nameQ">
+  </div>
+  <div>
+    <button style="margin-left: 20px"  class="btn btn-primary btn-sm mb-3" (click)="search()">Tìm kiếm</button>
+  </div>
+</div>
+<div class="card mt-4">
   <h4 class="card-header">{{ 'HOME.BK' | translate }}</h4>
   <div class="card-body">
     <div class="-mx-3 md:flex mb-2 w-full">

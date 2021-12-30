@@ -22,7 +22,7 @@ export class ModalAddQuestionComponent implements OnInit {
   correctAnswer: any;
   levelQ: any;
   @Input() selectedItem: any;
-
+  title: string
   constructor(private NgbActiveModal: NgbActiveModal,
               private adminService: AdminService,
               notifierService: NotifierService,
@@ -34,6 +34,7 @@ export class ModalAddQuestionComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.selectedItem);
     if (this.selectedItem) {
+      this.title = 'Sửa câu hỏi';
       // this.adminService.getQById(this.selectedItem.)
       this.question = this.selectedItem.question;
       this.questionType = this.selectedItem.questionType;
@@ -43,6 +44,8 @@ export class ModalAddQuestionComponent implements OnInit {
       this.answerD = this.selectedItem.answer.answerD;
       this.correctAnswer = this.selectedItem.correctAnswer;
       this.levelQ = this.selectedItem.difficulty;
+    } else {
+      this.title = 'Thêm câu hỏi';
     }
     console.log(this.correctAnswer);
     console.log(this.questionType);

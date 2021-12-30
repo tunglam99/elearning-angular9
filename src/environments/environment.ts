@@ -4,7 +4,8 @@
 
 export const environment = {
     production: false,
-    apiUrl: 'http://api.elearning.nvcd.xyz/api/'
+    apiUrl: 'http://api.elearning.nvcd.xyz/api/',
+    apiDevUrl: 'http://localhost:3002/api/'
 };
 
 /*

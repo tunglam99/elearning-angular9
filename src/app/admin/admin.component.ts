@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   loading = false;
   listQuestion: any;
   public mySelection: string[] = [];
+  nameQ: any;
 
   constructor(private adminService: AdminService,
               private modalService: NgbModal,) {
@@ -92,5 +93,16 @@ export class AdminComponent implements OnInit {
         this.loadData();
       }
     }).catch(error => error);
+  }
+
+  search() {
+    const body = {
+      questionSearch: this.nameQ
+    };
+    this.loading = true;
+    this.adminService.searchQuestion(body).subscribe(data => {
+      this.listQuestion = data;
+      this.loading = false;
+    });
   }
 }

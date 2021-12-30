@@ -19,6 +19,8 @@ export class TestComponent implements OnInit {
   time: any;
   idUpdate: any;
   listQuestion = [];
+  title: string;
+  button: string;
   constructor(private adminService: AdminService,
               private notiService: NotificationService,
               private translate: TranslateService,
@@ -31,20 +33,30 @@ export class TestComponent implements OnInit {
       this.idUpdate = dataItem.dataItem;
       if (this.idUpdate) {
         this.adminService.getdetaiDeThi(this.idUpdate).subscribe(data => {
-          this.questionType = data.type;
-          this.testCode = data.testCode;
-          this.numberQuestion = data.numberQuestion;
-          this.time = data.time;
-          // tslint:disable-next-line:prefer-for-of
-          for (let i = 0; i < data.questionCode.length; i++) {
-            console.log(data.questionCode[i]);
-            this.adminService.getQuestionById(data.questionCode[i]).subscribe(question => {
-              this.listQuestion.push(question);
-            });
+          console.log(data);
+          if (data) {
+            this.questionType = data.type;
+            this.testCode = data.testCode;
+            this.numberQuestion = data.numberQuestion;
+            this.time = data.time;
+            // tslint:disable-next-line:prefer-for-of
+            for (let i = 0; i < data.questionCode.length; i++) {
+              console.log(data.questionCode[i]);
+              this.adminService.getQuestionById(data.questionCode[i]).subscribe(question => {
+                this.listQuestion.push(question);
+              });
+            }
+            this.dataGrid = this.listQuestion;
+            this.mySelection = data.questionCode;
+            console.log(this.listQuestion);
           }
-          this.dataGrid = this.listQuestion;
-          console.log(this.listQuestion);
         });
+        this.title = 'Sửa đề thi';
+
+      } else {
+        this.questionType = "THDC";
+        this.getData();
+        this.title = 'Thêm đề thi';
       }
       console.log(dataItem);
       // this.numberQuestion = point.numberQuestion;
@@ -98,7 +110,7 @@ export class TestComponent implements OnInit {
   save() {
     const body = {
       testCode: this.testCode,
-      numberQuestion: this.numberQuestion,
+      numberQuestion: this.mySelection.length,
       questionCode: this.mySelection,
       type: this.questionType,
       time: this.time
@@ -112,10 +124,10 @@ export class TestComponent implements OnInit {
       this.notiService.showNoti(this.translate.instant('HOME.noti9'), 'error');
       return;
     }
-    if (body.numberQuestion === '' || body.numberQuestion === null || body.numberQuestion === undefined) {
-      this.notiService.showNoti(this.translate.instant('HOME.noti10'), 'error');
-      return;
-    }
+    // if (body.numberQuestion === '' || body.numberQuestion === null || body.numberQuestion === undefined) {
+    //   this.notiService.showNoti(this.translate.instant('HOME.noti10'), 'error');
+    //   return;
+    // }
     if (body.questionCode.length === 0) {
       this.notiService.showNoti(this.translate.instant('HOME.noti11'), 'error');
       return;

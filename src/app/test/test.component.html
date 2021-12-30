@@ -1,5 +1,5 @@
 <div class="card mt-4">
-  <h4 class="card-header">{{ 'HOME.addexam' | translate }}</h4>
+  <h4 class="card-header">{{ title }}</h4>
   <div class="card-body">
     <div class="-mx-3 md:flex mb-2 w-full">
       {{ 'BANK.chude' | translate }}<br>
@@ -50,16 +50,16 @@
         {{ 'HOME.made' | translate }}<br>
         <input type="text" [(ngModel)]="testCode">
       </div>
-      <div class="mt-3">
-        {{ 'HOME.soluongcauhoi' | translate }}<br>
-        <input type="number" [(ngModel)]="numberQuestion">
-      </div>
+<!--      <div class="mt-3">-->
+<!--        {{ 'HOME.soluongcauhoi' | translate }}<br>-->
+<!--        <input type="number" [(ngModel)]="this.mySelection">-->
+<!--      </div>-->
       <div class="mt-3">
         {{ 'HOME.timeT' | translate }}<br>
         <input type="number" [(ngModel)]="time">
       </div>
       <div class="mt-3 row">
-        <button class="btn btn-primary mr-5 ml-3" (click)="save()">{{ 'HOME.addexam' | translate }}</button>
+        <button class="btn btn-primary mr-5 ml-3" (click)="save()">{{title}}</button>
         <button class="btn btn-danger" [routerLink]="['/test']">{{ 'HOME.back' | translate }}</button>
       </div>
     </div>

@@ -20,10 +20,12 @@ export class QuizUserComponent implements OnInit, OnDestroy {
 
   listQuestion = [];
   answer = [];
-
+  time: number;
   ngOnInit(): void {
     this.adminService.getQuesForUser().subscribe(data => {
       this.numberQuestion = data.questionCode.length;
+      this.time = data.time;
+      this.timer(this.time);
       console.log(data);
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < data.questionCode.length; i++) {

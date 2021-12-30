@@ -8,6 +8,7 @@ import {environment} from '@environments/environment';
   providedIn: 'root'
 })
 export class AdminService {
+  // API = environment.apiDevUrl;
   API = environment.apiUrl;
 
   constructor(private http: HttpClient) {
@@ -82,5 +83,9 @@ export class AdminService {
 
   updateDethi(id: any, body: any) : Observable<any> {
     return this.http.put<any>(`${this.API}test/${id}/update`, body);
+  }
+
+  searchQuestion(name: { questionSearch: any }): Observable<any> {
+    return this.http.post<any>(`${this.API}question/search`, name);
   }
 }
